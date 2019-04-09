@@ -10,6 +10,8 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+const origin = "https://amazing-bassi-eb897e.netlify.com"
+
 function SEO({ description, lang, meta, keywords, title, image }) {
   const { site } = useStaticQuery(
     graphql`
@@ -51,7 +53,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           property: `og:type`,
           content: `website`,
         },
-        { property: "og:image", content: image },
+        { property: "og:image", content: `${origin}/${image}` },
         {
           name: `twitter:card`,
           content: `summary`,
