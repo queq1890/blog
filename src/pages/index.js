@@ -17,7 +17,7 @@ class BlogIndex extends React.Component {
         <SEO
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-          image="/content/assets/profile-pic.jpg"
+          image="/images/profile-pic.jpg"
         />
         <Bio />
         {posts.map(({ node }) => {
