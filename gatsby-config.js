@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://amazing-bassi-eb897e.netlify.com/`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -54,8 +55,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `queq1890 blog`,
+        short_name: `queq1890`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

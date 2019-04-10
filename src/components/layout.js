@@ -1,7 +1,41 @@
 import React from "react"
+import styled, { createGlobalStyle } from "styled-components"
 import NetlifyIdentity from "./NetlifyIdentity"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
+
+const GlobalStyle = createGlobalStyle`
+h1, h3 {
+  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+body {
+  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+`
+
+const Container = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${rhythm(24)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)}; */
+`
+
+const RootHeader = styled.h1`
+  ${scale(1.5)};
+  margin-bottom: rhythm(1.5);
+  margin-top: 0;
+`
+
+const PostHeader = styled.h3`
+  margin-top: 0;
+`
+
+const StyledLink = styled(Link)`
+  box-shadow: none;
+  text-decoration: none;
+  color: inherit;
+`
 
 class Layout extends React.Component {
   render() {
@@ -11,61 +45,26 @@ class Layout extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
+        <RootHeader>
+          <StyledLink to={`/`}>{title}</StyledLink>
+        </RootHeader>
       )
     } else {
       header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
+        <PostHeader>
+          <StyledLink to={`/`}>{title}</StyledLink>
+        </PostHeader>
       )
     }
     return (
       <>
+        <GlobalStyle />
         <NetlifyIdentity />
-        <div
-          style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }}
-        >
+        <Container>
           <header>{header}</header>
           <main>{children}</main>
           <footer />
-        </div>
+        </Container>
       </>
     )
   }
