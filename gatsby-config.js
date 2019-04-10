@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://amazing-bassi-eb897e.netlify.com/`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
