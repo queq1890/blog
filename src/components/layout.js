@@ -12,6 +12,12 @@ h1, h2, h3, h4 {
 body {
   font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+
+code.language-text {
+  padding: 0.1rem 0.2rem;
+  background-color: #8080803d;
+  border-radius: 1px;
+}
 `
 
 const Container = styled.div`
