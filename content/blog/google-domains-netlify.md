@@ -58,3 +58,5 @@ Google Domains を使うのも netlify でホストしているサイトにカ�
 ## 参考
 
 - <https://www.netlify.com/docs/custom-domains/>
+- <https://aakira.app/blog/2018/07/googledomains/>
+- <https://www.ravness.com/2018/07/netlifydomain/#.XLrka5P7RQI>
