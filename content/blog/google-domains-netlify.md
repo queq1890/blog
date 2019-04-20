@@ -54,7 +54,10 @@ Google Domains 側の設定に続いて、netlify 側の設定も行っていき
 ## 終わりに
 
 Google Domains を使うのも netlify でホストしているサイトにカスタムドメインを設定するのも初めてだったのですが、思ったよりもさくさく設定できて良かったです。
+次はガバガバになっている画像の置き場所・読み込み周り、タグ機能の追加あたりの改修をできたらと思います。
 
 ## 参考
 
 - <https://www.netlify.com/docs/custom-domains/>
+- <https://aakira.app/blog/2018/07/googledomains/>
+- <https://www.ravness.com/2018/07/netlifydomain/#.XLrka5P7RQI>
