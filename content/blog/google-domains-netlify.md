@@ -1,5 +1,5 @@
 ---
-title: Google Domains でドメインを取得してNetlify のプロジェクトに割り当てる
+title: Google Domains でドメインを取得してnetlify でホストしているサイトに割り当てる
 date: 2019-04-20T03:40:38.412Z
 image: /images/uploads/google-domains-logo.png
 ---
@@ -31,4 +31,32 @@ Google Domains を使ってドメインを取得して、Netlify のプロジェ
 
 ![custom](/images/uploads/_2019-04-20_11_31_54.png "custom")
 
-## 3.Netlify 側の設定を行う
+## 3.netlify 側の設定を行う
+
+Google Domains 側の設定に続いて、netlify 側の設定も行っていきます。
+
+ドメインを設定したいプロジェクトのダッシュボードにアクセスして、「Domain settings」をクリックします。
+
+![domain-settings](/images/uploads/_2019-04-20_12_04_52.png "domain-settings")
+
+遷移先のページの上部に「Custom domains」という項目があり、ここからドメインの設定ができます。「Add Custom domain」をクリックしてください。
+
+![add-custom-domain](/images/uploads/_2019-04-20_14_12_03.png "add-custom-domain")
+
+先程取得したドメインを入力して、「Verify」を押します。途中「このドメインは自分で所有しているドメインか？」のような確認が入りますが、Yes と答えれば大丈夫です。
+
+![verify-new-domain](/images/uploads/2019-04-20-14.12.20.png "verify-new-domain")
+
+これでドメインの設定が完了しました！自分の取得したドメインにブラウザからアクセスしてみると、設定を行ったnetlify でホストしているページが表示されるはずです。
+
+「Domain settings」のページからHTTPS化も行えるので、忘れずに設定しておきましょう。
+
+![https](/images/uploads/2019-04-20-14.34.56.png "https")
+
+## 終わりに
+
+Google Domains を使うのもnetlify でホストしているサイトにカスタムドメインを設定するのも初めてだったのですが、思ったよりもさくさく設定できて良かったです。
+
+## 参考
+
+* <https://www.netlify.com/docs/custom-domains/>
