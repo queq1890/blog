@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 
 const GlobalStyle = createGlobalStyle`
-h1, h3 {
+h1, h2, h3, h4 {
   font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
@@ -17,7 +17,7 @@ body {
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: ${rhythm(24)};
+  max-width: ${rhythm(28)};
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)}; */
 `
 
