@@ -16,7 +16,6 @@ Google Domains を使ってドメインを取得して、Netlify のプロジェ
 ![search-result](/images/uploads/2019-04-20-11.00.30.png "search-result")
 
 検索結果をクリックすると、カートに追加するかどうかを確認されるので、欲しいドメインをカートに追加して購入してしまいましょう。
-
 ドメインを購入すると、 購入に利用した Google Account にメールアドレスの確認のためのメールが届くので、本文に記載されているリンクをクリックして確認を完了します。
 ![verification](/images/uploads/_2019-04-20_11_22_41.png "verification")
 
@@ -35,7 +34,6 @@ Google Domains を使ってドメインを取得して、Netlify のプロジェ
 ## 3.netlify 側の設定を行う
 
 Google Domains 側の設定に続いて、netlify 側の設定も行っていきます。
-
 ドメインを設定したいプロジェクトのダッシュボードにアクセスして、「Domain settings」をクリックします。
 
 ![domain-settings](/images/uploads/_2019-04-20_12_04_52.png "domain-settings")
@@ -49,7 +47,6 @@ Google Domains 側の設定に続いて、netlify 側の設定も行っていき
 ![verify-new-domain](/images/uploads/2019-04-20-14.12.20.png "verify-new-domain")
 
 これでドメインの設定が完了しました！自分の取得したドメインにブラウザからアクセスしてみると、設定を行った netlify でホストしているページが表示されるはずです。
-
 「Domain settings」のページから HTTPS 化も行えるので、忘れずに設定しておきましょう。
 
 ![https](/images/uploads/2019-04-20-14.34.56.png "https")
