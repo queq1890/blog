@@ -18,9 +18,15 @@ image: /images/uploads/codeclimate.png
 
 環境構築とはいっても、Homebrew から導入してゴニョゴニョするだけで済みます。
 
-### Homebrew から Code Climate を導入する
+### Docker image を pull する
 
 \*Docker for Mac が導入されている前提
+
+```
+$ docker pull codeclimate/codeclimate
+```
+
+### Homebrew から Code Climate を導入する
 
 ```
 $ brew tap codeclimate/formulae
