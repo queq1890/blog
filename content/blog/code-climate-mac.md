@@ -58,6 +58,21 @@ $ cd /usr/local/bin/ && sudo chmod 755 codeclimate
 
 後は、Code Climate の設定ファイルのあるディレクトリで、`codeclimate` コマンドを叩けば、解析結果が `実行したディレクトリ/output.html` に出力されます。
 
+## 解析が中々始まらない場合
+
+[この issue](https://github.com/codeclimate/codeclimate/issues/912)を参考に`--volume /code/node_modules \`を docker 起動時のフラグに追加したところ、スムーズに解析を行ってくれるようになりました。
+
+```
+sudo docker run \
+--interactive --tty --rm \
+--env CODECLIMATE_CODE="$PWD" \
+--volume "$PWD":/code \
+--volume /var/run/docker.sock:/var/run/docker.sock \
+--volume /tmp/cc:/tmp/cc \
+--volume /code/node_modules \
+codeclimate/codeclimate analyze -f html > output.html
+```
+
 ## 参考
 
 - [Github](https://github.com/codeclimate/codeclimate)
