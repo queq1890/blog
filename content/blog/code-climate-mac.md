@@ -3,16 +3,16 @@ title: Code Climate を Mac で動かす
 date: 2019-09-13T08:12:30.933Z
 image: /images/uploads/codeclimate.png
 ---
+
 ## Code Climate とは
+
 [https://codeclimate.com](https://codeclimate.com)
+
 - コードの品質を測るためのサービス
 - OSS で使う分には無料
 - docker を使って動作環境を自分で作ることもできる
 
-今参加しているプロジェクトではCI でCode Climate の実行結果を見れるようにしているのですが、たまにプッシュする前にCode Climate の結果を見たいことがあり、手元で動かせるようにしてみました。
-
-
-
+今参加しているプロジェクトでは CI で Code Climate の実行結果を見れるようにしているのですが、たまにプッシュする前に Code Climate の結果を見たいことがあり、手元で動かせるようにしてみました。
 
 ## 環境構築
 
@@ -22,7 +22,7 @@ image: /images/uploads/codeclimate.png
 
 \*Docker for Mac が導入されている前提
 
-```bash
+```
 $ brew tap codeclimate/formulae
 $ brew install codeclimate
 ```
@@ -31,7 +31,7 @@ $ brew install codeclimate
 
 brew install が完了した段階で、shell を叩けば Code Climate は動くようになるのですが、一々入力をするのも面倒くさいので、以下の内容で `.sh` ファイルを作成しておきます。
 
-```codeclimate.sh
+```
 sudo docker run \
 --interactive --tty --rm \
 --env CODECLIMATE_CODE="$PWD" \
@@ -46,12 +46,13 @@ codeclimate/codeclimate analyze -f html > output.html
 
 作成した　`.sh` ファイルを`/usr/local/bin` 以下に配置し、権限を弄れば準備完了です。
 
-```shell
+```
 $ cd /usr/local/bin/ && sudo chmod 755 codeclimate
 ```
 
 後は、Code Climate の設定ファイルのあるディレクトリで、`codeclimate` コマンドを叩けば、解析結果が `実行したディレクトリ/output.html` に出力されます。
 
 ## 参考
+
 - [Github](https://github.com/codeclimate/codeclimate)
 - [Run Code Climate Locally](https://medium.com/@empressia/run-code-climate-locally-e30635321e18) この記事の手順を参考にシェルをちょこちょこ書き換えています。
