@@ -4,15 +4,15 @@ date: 2019-09-13T08:12:30.933Z
 image: /images/uploads/codeclimate.png
 ---
 ## Code Climate とは
-
+[https://codeclimate.com](https://codeclimate.com)
 - コードの品質を測るためのサービス
 - OSS で使う分には無料
 - docker を使って動作環境を自分で作ることもできる
 
 今参加しているプロジェクトではCI でCode Climate の実行結果を見れるようにしているのですが、たまにプッシュする前にCode Climate の結果を見たいことがあり、手元で動かせるようにしてみました。
 
-[https://codeclimate.com](https://codeclimate.com)
-[https://github.com/codeclimate/codeclimate](https://github.com/codeclimate/codeclimate)
+
+
 
 ## 環境構築
 
@@ -51,3 +51,7 @@ $ cd /usr/local/bin/ && sudo chmod 755 codeclimate
 ```
 
 後は、Code Climate の設定ファイルのあるディレクトリで、`codeclimate` コマンドを叩けば、解析結果が `実行したディレクトリ/output.html` に出力されます。
+
+## 参考
+- [Github](https://github.com/codeclimate/codeclimate)
+- [Run Code Climate Locally](https://medium.com/@empressia/run-code-climate-locally-e30635321e18) この記事の手順を参考にシェルをちょこちょこ書き換えています。
