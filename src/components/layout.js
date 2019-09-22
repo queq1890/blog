@@ -16,6 +16,11 @@ body {
 ul li {
   list-style-position: inside;
 }
+
+p code.language-text {
+  padding-left: .5em;
+  padding-right: .5em;
+}
 `
 
 const Container = styled.div`
