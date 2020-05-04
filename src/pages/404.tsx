@@ -10,7 +10,7 @@ interface Props {
 }
 
 const NotFoundPage: React.FC<Props> = ({ data, location }) => {
-  const siteTitle = data?.site?.siteMetadata?.title ?? '';
+  const siteTitle = data?.site?.siteMetadata?.title;
 
   return (
     <Layout location={location} title={siteTitle}>
