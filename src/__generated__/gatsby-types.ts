@@ -3061,16 +3061,6 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-type SiteMetaDataQueryVariables = {};
-
-
-type SiteMetaDataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type NotFoundQueryVariables = {};
-
-
-type NotFoundQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
 type BlogIndexQueryVariables = {};
 
 
@@ -3078,6 +3068,11 @@ type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick
         Pick<MarkdownRemark, 'excerpt'>
         & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
       ) }> } };
+
+type NotFoundQueryVariables = {};
+
+
+type NotFoundQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 type BlogPostBySlugQueryVariables = {
   slug: Scalars['String'];
@@ -3088,6 +3083,11 @@ type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe
     Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
     & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'image' | 'date'>> }
   )> };
+
+type SiteMetaDataQueryVariables = {};
+
+
+type SiteMetaDataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

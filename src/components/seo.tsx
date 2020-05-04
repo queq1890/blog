@@ -16,7 +16,7 @@ interface Props {
   lang?: string;
   keywords?: string[];
   image?: string;
-  title: string;
+  title?: string;
 }
 
 const SEO: React.FC<Props> = ({
@@ -24,9 +24,9 @@ const SEO: React.FC<Props> = ({
   lang = 'en',
   keywords = [],
   image = '',
-  title,
+  title = 'queq1890',
 }) => {
-  const { site }: any = useStaticQuery<GatsbyTypes.SiteMetaDataQuery>(
+  const { site } = useStaticQuery<GatsbyTypes.SiteMetaDataQuery>(
     graphql`
       query SiteMetaData {
         site {
@@ -40,7 +40,7 @@ const SEO: React.FC<Props> = ({
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = description || site?.siteMetadata?.description;
 
   return (
     <Helmet
@@ -48,7 +48,7 @@ const SEO: React.FC<Props> = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site?.siteMetadata?.title}`}
       meta={[
         {
           name: 'description',
@@ -73,7 +73,7 @@ const SEO: React.FC<Props> = ({
         },
         {
           name: 'twitter:creator',
-          content: site.siteMetadata.author,
+          content: site?.siteMetadata?.author,
         },
         {
           name: 'twitter:title',

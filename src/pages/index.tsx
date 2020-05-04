@@ -12,7 +12,7 @@ interface Props {
 }
 
 const BlogIndex: React.FC<Props> = ({ data, location }) => {
-  const siteTitle = data?.site?.siteMetadata?.title ?? 'queq1890';
+  const siteTitle = data?.site?.siteMetadata?.title;
   const posts = data.allMarkdownRemark.edges;
 
   return (
@@ -23,28 +23,29 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
         image="/images/profile-pic.jpg"
       />
       <Bio />
-      {/* TODO: stop using any */}
-      {posts.map(({ node }: any) => {
-        const title = node.frontmatter.title || node.fields.slug;
+      {posts.map(({ node }) => {
+        const title = node?.frontmatter?.title;
 
         return (
-          <div key={node.fields.slug}>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                {title}
-              </Link>
-            </h3>
-            <small>{node.frontmatter.date}</small>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: node.excerpt,
-              }}
-            />
-          </div>
+          node?.fields?.slug && (
+            <div key={node?.fields?.slug}>
+              <h3
+                style={{
+                  marginBottom: rhythm(1 / 4),
+                }}
+              >
+                <Link style={{ boxShadow: 'none' }} to={node?.fields?.slug}>
+                  {title}
+                </Link>
+              </h3>
+              <small>{node?.frontmatter?.date}</small>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: node?.excerpt as string,
+                }}
+              />
+            </div>
+          )
         );
       })}
     </Layout>

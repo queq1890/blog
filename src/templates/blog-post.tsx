@@ -12,19 +12,18 @@ interface Props {
 }
 
 const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
-  // TODO: stop using any
-  const post: any = data.markdownRemark;
-  const siteTitle = data?.site?.siteMetadata?.title ?? '';
-  const { previous, next }: any = pageContext;
+  const post = data.markdownRemark;
+  const siteTitle = data?.site?.siteMetadata?.title;
+  const { previous, next } = pageContext;
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
-        title={post.frontmatter.title}
-        description={post.excerpt}
-        image={post.frontmatter.image}
+        title={post?.frontmatter?.title}
+        description={post?.excerpt}
+        image={post?.frontmatter?.image}
       />
-      <h1>{post.frontmatter.title}</h1>
+      <h1>{post?.frontmatter?.title}</h1>
       <p
         style={{
           ...scale(-1 / 5),
@@ -33,9 +32,9 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
           marginTop: rhythm(-1),
         }}
       >
-        {post.frontmatter.date}
+        {post?.frontmatter?.date}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div dangerouslySetInnerHTML={{ __html: post?.html as string }} />
 
       <ul
         style={{
@@ -47,16 +46,16 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
         }}
       >
         <li>
-          {previous && (
+          {previous?.fields?.slug && (
             <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
+              ← {previous?.frontmatter?.title}
             </Link>
           )}
         </li>
         <li>
-          {next && (
+          {next?.fields?.slug && (
             <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
+              {next?.frontmatter?.title} →
             </Link>
           )}
         </li>
