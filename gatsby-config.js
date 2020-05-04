@@ -75,7 +75,8 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-ts`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-typegen`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {

@@ -3,3 +3,4 @@ gatsby-node.js
 node_modules/
 *.config.js
 src/utils/
+src/__generated__/gatsby-types.ts

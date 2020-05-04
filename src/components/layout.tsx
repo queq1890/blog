@@ -7,7 +7,6 @@ import { rhythm, scale } from '../utils/typography';
 interface Props {
   location: Location;
   title: string;
-  children?: any;
 }
 
 const GlobalStyle = createGlobalStyle`

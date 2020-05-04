@@ -7,15 +7,13 @@ import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
 interface Props {
-  data: any;
+  data: GatsbyTypes.BlogIndexQuery;
   location: Location;
 }
 
 const BlogIndex: React.FC<Props> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
+  const siteTitle = data?.site?.siteMetadata?.title ?? 'queq1890';
   const posts = data.allMarkdownRemark.edges;
-
-  console.log({ posts });
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,6 +23,7 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
         image="/images/profile-pic.jpg"
       />
       <Bio />
+      {/* TODO: stop using any */}
       {posts.map(({ node }: any) => {
         const title = node.frontmatter.title || node.fields.slug;
 
@@ -55,7 +54,7 @@ const BlogIndex: React.FC<Props> = ({ data, location }) => {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query BlogIndex {
     site {
       siteMetadata {
         title

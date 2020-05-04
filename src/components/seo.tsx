@@ -14,7 +14,6 @@ const origin = 'https://amazing-bassi-eb897e.netlify.com';
 interface Props {
   description?: string;
   lang?: string;
-  meta?: any[];
   keywords?: string[];
   image?: string;
   title: string;
@@ -23,14 +22,13 @@ interface Props {
 const SEO: React.FC<Props> = ({
   description = '',
   lang = 'en',
-  meta = [],
   keywords = [],
   image = '',
   title,
 }) => {
-  const { site } = useStaticQuery(
+  const { site }: any = useStaticQuery<GatsbyTypes.SiteMetaDataQuery>(
     graphql`
-      query {
+      query SiteMetaData {
         site {
           siteMetadata {
             title
@@ -85,16 +83,14 @@ const SEO: React.FC<Props> = ({
           name: 'twitter:description',
           content: metaDescription,
         },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: 'keywords',
-                content: keywords.join(', '),
-              }
-            : []
-        )
-        .concat(meta)}
+      ].concat(
+        keywords.length > 0
+          ? {
+              name: 'keywords',
+              content: keywords.join(', '),
+            }
+          : []
+      )}
     />
   );
 };

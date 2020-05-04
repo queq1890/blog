@@ -6,15 +6,16 @@ import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
 interface Props {
-  data: any;
+  data: GatsbyTypes.BlogPostBySlugQuery;
   location: Location;
-  pageContext: any;
+  pageContext: GatsbyTypes.SitePageContext;
 }
 
 const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
-  const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata.title;
-  const { previous, next } = pageContext;
+  // TODO: stop using any
+  const post: any = data.markdownRemark;
+  const siteTitle = data?.site?.siteMetadata?.title ?? '';
+  const { previous, next }: any = pageContext;
 
   return (
     <Layout location={location} title={siteTitle}>

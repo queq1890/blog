@@ -5,12 +5,12 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 interface Props {
-  data: any;
+  data: GatsbyTypes.NotFoundQuery;
   location: Location;
 }
 
 const NotFoundPage: React.FC<Props> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
+  const siteTitle = data?.site?.siteMetadata?.title ?? '';
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -24,7 +24,7 @@ const NotFoundPage: React.FC<Props> = ({ data, location }) => {
 export default NotFoundPage;
 
 export const pageQuery = graphql`
-  query {
+  query NotFound {
     site {
       siteMetadata {
         title
