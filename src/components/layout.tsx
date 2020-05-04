@@ -1,8 +1,14 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, CSSObject } from 'styled-components';
 import { Link } from 'gatsby';
 import NetlifyIdentity from './NetlifyIdentity';
 import { rhythm, scale } from '../utils/typography';
+
+interface Props {
+  location: Location;
+  title: string;
+  children?: any;
+}
 
 const GlobalStyle = createGlobalStyle`
 h1, h2, h3, h4 {
@@ -31,7 +37,7 @@ const Container = styled.div`
 `;
 
 const RootHeader = styled.h1`
-  ${scale(1.5)};
+  ${scale(1.5) as CSSObject};
   margin-bottom: rhythm(1.5);
   margin-top: 0;
 `;
@@ -46,38 +52,35 @@ const StyledLink = styled(Link)`
   color: inherit;
 `;
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
-    let header;
+const Layout: React.FC<Props> = ({ location, title, children }) => {
+  const rootPath = `${__PATH_PREFIX__}/`;
+  let header;
 
-    if (location.pathname === rootPath) {
-      header = (
-        <RootHeader>
-          <StyledLink to="/">{title}</StyledLink>
-        </RootHeader>
-      );
-    } else {
-      header = (
-        <PostHeader>
-          <StyledLink to="/">{title}</StyledLink>
-        </PostHeader>
-      );
-    }
-
-    return (
-      <>
-        <GlobalStyle />
-        <NetlifyIdentity />
-        <Container>
-          <header>{header}</header>
-          <main>{children}</main>
-          <footer />
-        </Container>
-      </>
+  if (location.pathname === rootPath) {
+    header = (
+      <RootHeader>
+        <StyledLink to="/">{title}</StyledLink>
+      </RootHeader>
+    );
+  } else {
+    header = (
+      <PostHeader>
+        <StyledLink to="/">{title}</StyledLink>
+      </PostHeader>
     );
   }
-}
+
+  return (
+    <>
+      <GlobalStyle />
+      <NetlifyIdentity />
+      <Container>
+        <header>{header}</header>
+        <main>{children}</main>
+        <footer />
+      </Container>
+    </>
+  );
+};
 
 export default Layout;

@@ -6,13 +6,28 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const origin = 'https://amazing-bassi-eb897e.netlify.com';
 
-function SEO({ description, lang, meta, keywords, title, image }) {
+interface Props {
+  description?: string;
+  lang?: string;
+  meta?: any[];
+  keywords?: string[];
+  image?: string;
+  title: string;
+}
+
+const SEO: React.FC<Props> = ({
+  description = '',
+  lang = 'en',
+  meta = [],
+  keywords = [],
+  image = '',
+  title,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -82,23 +97,6 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         .concat(meta)}
     />
   );
-}
-
-SEO.defaultProps = {
-  lang: 'en',
-  meta: [],
-  keywords: [],
-  description: '',
-  image: '',
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string,
 };
 
 export default SEO;
