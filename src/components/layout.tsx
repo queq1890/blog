@@ -10,22 +10,36 @@ interface Props {
 }
 
 const GlobalStyle = createGlobalStyle`
-h1, h2, h3, h4 {
-  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-}
+  :root {
+    @media (prefers-color-scheme: light) {
+      --bg-color: #fff;
+      --color: #333
+    }
 
-body {
-  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-}
+    @media(prefers-color-scheme: dark){
+      --bg-color: #333;
+      --color: #fff;
+    }
+  }
 
-ul li {
-  list-style-position: inside;
-}
+  h1, h2, h3, h4 {
+    font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+  }
 
-p code.language-text {
-  padding-left: .5em;
-  padding-right: .5em;
-}
+  body {
+    font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-color: var(--bg-color);
+    color: var(--color);
+  }
+
+  ul li {
+    list-style-position: inside;
+  }
+
+  p code.language-text {
+    padding-left: .5em;
+    padding-right: .5em;
+  }
 `;
 
 const Container = styled.div`
