@@ -33,7 +33,7 @@ module.exports = {
 ## JS ファイルをTS ファイルに置き換える
 プラグインの導入が完了したら、`tsconfig.json` をプロジェクトルートに用意する。`tsconfig.json`の書き方について、プラグイン側からの拘束は特にない(はず)なので、好きに書けば良いと思う。
 
-`tsconfig.json` が用意できたら、`.jsx` を`.tsx`に、`.ts`を`.js` に変更した上で、一度`gatsby develop` を実行する。 まだ型を付けていないのでTypeScript のエラーが表示され、強制終了してしまうのだが、`gatsby-plugin-typegen`が各page / component に書かれているGraphQL のquery から必要な型定義を生成してくれる。(default のpath は`src/__generated__/gatsby-types.ts`)
+`tsconfig.json` が用意できたら、`.jsx` を`.tsx`に、`.js`を`.ts` に変更した上で、一度`gatsby develop` を実行する。 まだ型を付けていないのでTypeScript のエラーが表示され、強制終了してしまうが、`gatsby-plugin-typegen`が各page / component に書かれているGraphQL のquery から必要な型定義を生成してくれる。(default のpath は`src/__generated__/gatsby-types.ts`)
 例えば、`BlogIndex` という名前のquery をpage / component で利用しているなら、その返り値の型は`GatsbyTypes.BlogIndexQuery`となる。
 
 ```typescript
