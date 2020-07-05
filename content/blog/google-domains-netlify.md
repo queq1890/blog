@@ -2,7 +2,7 @@
 title: Google Domains でドメインを取得してnetlify でホストしているサイトに割り当てる
 date: 2019-04-20T03:40:38.412Z
 image: /images/uploads/google-domains-logo.png
-tags: ["test"]
+tags: ["netlify", "google-domains"]
 ---
 
 Google Domains を使ってドメインを取得して、Netlify のプロジェクトに割り当てるまでをやったので、過程をメモしておきます。![domains-logo](/images/uploads/google-domains-logo.png "domains-logo")

@@ -2,7 +2,7 @@
 title: Code Climate を Mac で動かす
 date: 2019-09-13T08:12:30.933Z
 image: /images/uploads/codeclimate.png
-tags: ["test"]
+tags: ["code-climate"]
 ---
 
 ## Code Climate とは
