@@ -1,45 +1,53 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+
 type Props = {
-  data: GatsbyTypes.BlogPostBySlugQuery;
+  location: Location;
+  data: GatsbyTypes.BlogPostByTagQuery;
   pageContext: GatsbyTypes.SitePageContext;
 };
 
-const Tags: React.FC<Props> = ({ pageContext, data }) => {
+const Tags: React.FC<Props> = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
-  const { edges, totalCount } = data.allMarkdownRemark;
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-  } tagged with "${tag}"`;
+  const description = `${tag} タグの投稿一覧`;
+  const { edges } = data.allMarkdownRemark;
+  const siteTitle = data?.site?.siteMetadata?.title;
 
   return (
-    <div>
-      <h1>{tagHeader}</h1>
+    <Layout location={location} title={siteTitle}>
+      <SEO title={tag} description={description} />
+
+      <h1>{description}</h1>
       <ul>
         {edges.map(({ node }) => {
-          const { slug } = node.fields;
-          const { title } = node.frontmatter;
+          const slug = node.fields?.slug ?? '';
+          const title = node.frontmatter?.title;
 
           return (
-            <li key={slug}>
+            <li key={node.fields?.slug}>
               <Link to={slug}>{title}</Link>
             </li>
           );
         })}
       </ul>
-      {/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
+
       <Link to="/tags">All tags</Link>
-    </div>
+    </Layout>
   );
 };
 
 export default Tags;
 export const pageQuery = graphql`
-  query($tag: String) {
+  query BlogPostByTag($tag: String) {
+    site {
+      siteMetadata {
+        title
+        author
+      }
+    }
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
