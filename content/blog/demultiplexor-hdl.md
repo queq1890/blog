@@ -1,7 +1,7 @@
 ---
 title: Demultiplexor をhdl で記述した際のメモ
 date: 2019-09-16T09:39:27.111Z
-tags: ["test"]
+tags: ["test", "a"]
 ---
 「コンピュータシステムの理論と実装 ―モダンなコンピュータの作り方」の「1章 ブール論理」より、Demultiplexor をいくつかhdl で書いてみたので、考え方のメモ。
 

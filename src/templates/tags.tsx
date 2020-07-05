@@ -40,6 +40,7 @@ const Tags: React.FC<Props> = ({ pageContext, data, location }) => {
 };
 
 export default Tags;
+
 export const pageQuery = graphql`
   query BlogPostByTag($tag: String) {
     site {

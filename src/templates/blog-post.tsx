@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -10,6 +11,16 @@ interface Props {
   location: Location;
   pageContext: GatsbyTypes.SitePageContext;
 }
+
+const TagContainer = styled('div')`
+  display: flex;
+`;
+
+const Tag = styled('div')`
+  :not(:first-child) {
+    padding-left: 4px;
+  }
+`;
 
 const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
   const post = data.markdownRemark;
@@ -24,6 +35,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
         image={post?.frontmatter?.image}
       />
       <h1>{post?.frontmatter?.title}</h1>
+
       <p
         style={{
           ...scale(-1 / 5),
@@ -34,6 +46,33 @@ const BlogPostTemplate: React.FC<Props> = ({ data, location, pageContext }) => {
       >
         {post?.frontmatter?.date}
       </p>
+
+      <TagContainer>
+        <Tag
+          style={{
+            ...scale(-1 / 5),
+            display: 'block',
+            marginBottom: rhythm(1),
+            marginTop: rhythm(-1),
+          }}
+        >
+          tags :
+        </Tag>
+        {post?.frontmatter?.tags?.map((tag) => (
+          <Tag
+            key={tag}
+            style={{
+              ...scale(-1 / 5),
+              display: 'block',
+              marginBottom: rhythm(1),
+              marginTop: rhythm(-1),
+            }}
+          >
+            <Link to={`tags/${tag}`}>{tag}</Link>
+          </Tag>
+        ))}
+      </TagContainer>
+
       <div dangerouslySetInnerHTML={{ __html: post?.html as string }} />
 
       <ul
@@ -82,6 +121,7 @@ export const pageQuery = graphql`
         title
         image
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
     }
   }
