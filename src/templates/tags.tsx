@@ -33,8 +33,6 @@ const Tags: React.FC<Props> = ({ pageContext, data, location }) => {
           );
         })}
       </ul>
-
-      <Link to="/tags">All tags</Link>
     </Layout>
   );
 };
