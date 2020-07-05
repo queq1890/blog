@@ -9,6 +9,10 @@ interface Props {
   title?: string;
 }
 
+interface HeaderProps {
+  isRootPath: boolean;
+}
+
 const GlobalStyle = createGlobalStyle`
   :root {
     @media (prefers-color-scheme: light) {
@@ -55,7 +59,7 @@ const RootHeader = styled.h1`
   margin-top: 0;
 `;
 
-const PostHeader = styled.h3`
+const PageHeader = styled.h3`
   margin-top: 0;
 `;
 
@@ -65,30 +69,30 @@ const StyledLink = styled(Link)`
   color: inherit;
 `;
 
+const Header: React.FC<HeaderProps> = ({ isRootPath, children }) => {
+  return (
+    <header>
+      {isRootPath ? (
+        <RootHeader>{children} </RootHeader>
+      ) : (
+        <PageHeader>{children}</PageHeader>
+      )}
+    </header>
+  );
+};
+
 const Layout: React.FC<Props> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
-
-  if (location.pathname === rootPath) {
-    header = (
-      <RootHeader>
-        <StyledLink to="/">{title}</StyledLink>
-      </RootHeader>
-    );
-  } else {
-    header = (
-      <PostHeader>
-        <StyledLink to="/">{title}</StyledLink>
-      </PostHeader>
-    );
-  }
+  const isRootPath = location.pathname === rootPath;
 
   return (
     <>
       <GlobalStyle />
       <NetlifyIdentity />
       <Container>
-        <header>{header}</header>
+        <Header isRootPath={isRootPath}>
+          <StyledLink to="/">{title}</StyledLink>
+        </Header>
         <main>{children}</main>
         <footer />
       </Container>
