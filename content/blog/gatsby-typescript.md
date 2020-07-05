@@ -2,6 +2,7 @@
 title: Gatsby プロジェクトに後からTypeScript を導入する
 date: 2020-05-04T10:12:30.379Z
 image: /images/uploads/gatsby.jpeg
+tags: ["test"]
 ---
 ## TLDR;
 - `gatsby-plugin-typescript` を使えば特に苦労することなくTS 化できる
