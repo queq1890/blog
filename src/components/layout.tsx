@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4 {
     font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    text-transform: none;
   }
 
   body {
