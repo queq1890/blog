@@ -2,7 +2,7 @@
 title: styled-components をどこに置くか考察メモ
 date: 2020-08-09T17:47:29.033Z
 tags:
-  - react styled-components
+  - styled-components
 ---
 ## 特定の js ファイルにまとめる場合(styles.js)
 
