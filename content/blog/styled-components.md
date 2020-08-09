@@ -110,14 +110,13 @@ jsx と同じファイル内に styled-component を書く場合、大抵の場�
 
 #### jsx のコード量が多くなる
 
-React componnet と styled-component が同じファイル内に書かれるので、jsx ファイル内のコード量は多くなる。ただし、React component と styled-component は全く役割の違う module で、別々に const
+React component と styled-component が同じファイル内に書かれるので、jsx ファイル内のコード量は多くなる。ただし、React component と styled-component は全く役割の違う module で、別々に const
 されているため、コードの可読性が落ちるという訳ではない。
 
 ## IMO
-
-- styled-componnet は React component と同じファイルに書く方が将来的に変更をしやすくなる
+- styled-component と JSX を同じファイルに書く場合のデメリットが正直そこまでデメリットではないので、特別な理由がない限りこちらの実装を選んだほうが幸せになれそう
   - ただし、1 directory - 1 jsx - 1 style のような規約を守れるなら、分割しても良いと思う
     - 現実だとこの規約を守れない dev がいるので、厳密にレビューする必要が出る
   - もちろん primitive な React Component ではなくて`styled.div` 定義を複数の場所から使いまわしたい、という場合は、 styled-component を export するための module を定義してあげれば良いと思う
 - styled-components は 1 component - 1 scoped CSS という思想の library なのだから、実装も scoped になるように寄せてあげるべき
-- styled-component と JSX を同じファイルに書く場合のデメリットが正直そこまでデメリットではないので、特別な理由がない限りこちらの実装を選んだほうが幸せになれそう
+
