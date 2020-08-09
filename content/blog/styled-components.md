@@ -2,7 +2,7 @@
 title: styled-components をどこに置くか考察メモ
 date: 2020-08-09T17:47:29.033Z
 tags:
-  - styled-components
+  - react styled-components
 ---
 ## 特定の js ファイルにまとめる場合(styles.js)
 
@@ -114,9 +114,10 @@ React component と styled-component が同じファイル内に書かれるの�
 されているため、コードの可読性が落ちるという訳ではない。
 
 ## IMO
-- styled-component と JSX を同じファイルに書く場合のデメリットが正直そこまでデメリットではないので、特別な理由がない限りこちらの実装を選んだほうが幸せになれそう
-  - ただし、1 directory - 1 jsx - 1 style のような規約を守れるなら、分割しても良いと思う
-    - 現実だとこの規約を守れない dev がいるので、厳密にレビューする必要が出る
+
+まとめると、
+- 1 directory - 1 jsx - 1 style のような規約を守れるなら、分割しても良いと思う
+  - 現実だとこの規約を守れない dev がいるので、厳密にレビューする必要が出る
   - もちろん primitive な React Component ではなくて`styled.div` 定義を複数の場所から使いまわしたい、という場合は、 styled-component を export するための module を定義してあげれば良いと思う
 - styled-components は 1 component - 1 scoped CSS という思想の library なのだから、実装も scoped になるように寄せてあげるべき
-
+- styled-component と JSX を同じファイルに書く場合のデメリットが正直そこまでデメリットではないので、特別な理由がない限りこちらの実装を選んだほうが幸せになれそう
