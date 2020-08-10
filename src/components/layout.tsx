@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
 
   ul li {
     list-style-position: inside;
+
+    p {
+      display: inline;
+    }
   }
 
   p code.language-text {

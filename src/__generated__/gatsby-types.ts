@@ -693,8 +693,8 @@ enum FileFieldsEnum {
   childMarkdownRemark___id = 'childMarkdownRemark.id',
   childMarkdownRemark___frontmatter___title = 'childMarkdownRemark.frontmatter.title',
   childMarkdownRemark___frontmatter___date = 'childMarkdownRemark.frontmatter.date',
-  childMarkdownRemark___frontmatter___tags = 'childMarkdownRemark.frontmatter.tags',
   childMarkdownRemark___frontmatter___image = 'childMarkdownRemark.frontmatter.image',
+  childMarkdownRemark___frontmatter___tags = 'childMarkdownRemark.frontmatter.tags',
   childMarkdownRemark___excerpt = 'childMarkdownRemark.excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark.rawMarkdownBody',
   childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark.fileAbsolutePath',
@@ -1470,8 +1470,8 @@ enum MarkdownRemarkFieldsEnum {
   id = 'id',
   frontmatter___title = 'frontmatter.title',
   frontmatter___date = 'frontmatter.date',
-  frontmatter___tags = 'frontmatter.tags',
   frontmatter___image = 'frontmatter.image',
+  frontmatter___tags = 'frontmatter.tags',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
   fileAbsolutePath = 'fileAbsolutePath',
@@ -1600,8 +1600,8 @@ type MarkdownRemarkFilterInput = {
 type MarkdownRemarkFrontmatter = {
   readonly title: Maybe<Scalars['String']>;
   readonly date: Maybe<Scalars['Date']>;
-  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly image: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 
@@ -1615,8 +1615,8 @@ type MarkdownRemarkFrontmatter_dateArgs = {
 type MarkdownRemarkFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly date: Maybe<DateQueryOperatorInput>;
-  readonly tags: Maybe<StringQueryOperatorInput>;
   readonly image: Maybe<StringQueryOperatorInput>;
+  readonly tags: Maybe<StringQueryOperatorInput>;
 };
 
 type MarkdownRemarkGroupConnection = {
@@ -3001,6 +3001,14 @@ type NotFoundQueryVariables = {};
 
 type NotFoundQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
+type BlogIndexQueryVariables = {};
+
+
+type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<MarkdownRemark, 'excerpt'>
+        & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
+      ) }> } };
+
 type BlogPostBySlugQueryVariables = {
   slug: Scalars['String'];
 };
@@ -3010,14 +3018,6 @@ type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe
     Pick<MarkdownRemark, 'id' | 'excerpt' | 'html'>
     & { readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'image' | 'date' | 'tags'>> }
   )> };
-
-type BlogIndexQueryVariables = {};
-
-
-type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<MarkdownRemark, 'excerpt'>
-        & { readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
-      ) }> } };
 
 type BlogPostByTagQueryVariables = {
   tag: Maybe<Scalars['String']>;
