@@ -2,7 +2,7 @@
 title: style 定義ををどこに書くか考察メモ
 date: 2020-08-09T17:47:29.033Z
 tags:
-  - styleing
+  - styling
 ---
 ## 特定の js ファイルにまとめる場合(styles.js)
 
