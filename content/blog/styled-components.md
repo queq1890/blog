@@ -1,8 +1,8 @@
 ---
-title: styled-components をどこに置くか考察メモ
+title: style 定義ををどこに書くか考察メモ
 date: 2020-08-09T17:47:29.033Z
 tags:
-  - styled-components
+  - styleing
 ---
 ## 特定の js ファイルにまとめる場合(styles.js)
 
@@ -65,14 +65,13 @@ export default A
 
 また、styled-component + className を使って styling をしている場合、次のような component が生まれてしまう可能性がある。
 
-```
+```jsx
 const A = ({ MainLogoUrl, SubLogoUrl }) => (
   <div className="logo">
     <img src={MainLogoUrl} className="main_logo" alt="logo_main" />
     <img src={SubLogoUrl} className="sub_logo" alt="logo_sub" />
   </div>
 )
-
 ```
 
 この component は、parent component の wrapper(styled-component) 内で定義されている className に依存しており、この component のみではどのような style になるのかが分からない。なので、A component の styling を理解したい場合は、「A component の実装を読む => A component を render している parent component を探す => parent component の style から component A 向けの className を探す」という手順を踏むことになり、非常に効率が悪い。そもそも、styled-component は 1 component - 1 scoped CSS の思想で設計されている library なので、ある component の style が別の component に依存するような設計になることは間違いである。
@@ -97,11 +96,10 @@ const A = ({ className }) => (
 
 #### style が scoped であることが保証される
 
-```
+```jsx
 const A = () => (<B>aaa</B>)
 
 const B = styled.div``
-
 ```
 
 jsx と同じファイル内に styled-component を書く場合、大抵の場合は定義した styled-component を export をする必要はない。上記の場合、styled-component である B は export されていないので、B の CSS を変更しても影響があるのがこの jsx の中だけだと分かる。他の component に影響を与えない事が分かっているので、style の refactoring がしやすい。また、同一ファイル内に CSS が書かれているので、「どのファイルで style を定義しているのか？」を考えなくていい。
@@ -116,8 +114,8 @@ React component と styled-component が同じファイル内に書かれるの�
 ## IMO
 
 まとめると、
+- styled-components は 1 component - 1 scoped CSS という思想の library なのだから、実装も scoped になるように寄せてあげるべき
+- styled-component と JSX を同じファイルに書く場合のデメリットが正直そこまでデメリットではないので、特別な理由がない限りこちらの実装を選んだほうが幸せになれそう
 - 1 directory - 1 jsx - 1 style のような規約を守れるなら、分割しても良いと思う
   - 現実だとこの規約を守れない dev がいるので、厳密にレビューする必要が出る
   - もちろん primitive な React Component ではなくて`styled.div` 定義を複数の場所から使いまわしたい、という場合は、 styled-component を export するための module を定義してあげれば良いと思う
-- styled-components は 1 component - 1 scoped CSS という思想の library なのだから、実装も scoped になるように寄せてあげるべき
-- styled-component と JSX を同じファイルに書く場合のデメリットが正直そこまでデメリットではないので、特別な理由がない限りこちらの実装を選んだほうが幸せになれそう
