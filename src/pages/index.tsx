@@ -11,6 +11,14 @@ interface Props {
   location: Location;
 }
 
+const onClick = async () => {
+  const data = await fetch("https://vimeo.com/api/v2/video/52187103.json")
+    .then((res) => res.json())
+    .then((data) => data);
+
+  console.log(data);
+};
+
 const BlogIndex: React.FC<Props> = ({ data, location }) => {
   const siteTitle = data?.site?.siteMetadata?.title;
   const posts = data.allMarkdownRemark.edges;
